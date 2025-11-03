@@ -1,30 +1,55 @@
-FROM condaforge/mambaforge
+FROM python:3.10.12-slim
 
-# Python version
-ARG PYTHON_VERSION="3.10.12"
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    bash \
+    curl \
+    wget \
+    xz-utils \
+    gcc \
+    g++ \
+    gfortran \
+    cmake \
+    make \
+    libopenblas-dev \
+    liblapack-dev \
+    libxrender1 \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-# Change python version
-RUN mamba install --quiet --yes python=$PYTHON_VERSION ipykernel
+# Upgrade pip
+RUN pip install --no-cache-dir --upgrade pip
 
-# Adding conda channels
-RUN mamba config --add channels conda-forge
+# Install Python packages
+RUN pip install --no-cache-dir \
+    ipython \
+    ipykernel \
+    numpy \
+    pandas \
+    matplotlib \
+    seaborn \
+    ase \
+    pymatgen \
+    scikit-learn \
+    rdkit \
+    xtb \
+    jupyter-jsmol
 
-# Installing dependecies
-RUN mamba install --quiet --yes \
-    'pip' \
-    'ipython' \
-    'numpy' \
-    'pandas' \
-    'matplotlib' \
-    'seaborn' \
-    'ase' \
-    'pymatgen' \ 
-    'xtb' \
-    'xtb-python' \
-    'rdkit' \
-    'jupyter-jsmol' \
-    'autode' \
-    'scikit-learn' && \
-    mamba clean --all -f -y
+# Install xtb-related packages
+RUN pip install --no-cache-dir xtb-python || echo "xtb-python installation failed, skipping"
 
+# Install autode
+RUN git clone https://github.com/duartegroup/autodE.git /tmp/autodE && \
+    cd /tmp/autodE && \
+    pip install --no-cache-dir . && \
+    cd / && \
+    rm -rf /tmp/autodE
 
+# Set unlimited stack size
+RUN echo "ulimit -s unlimited" >> /etc/bash.bashrc
+
+# Verify python is accessible
+RUN python --version && pip --version
+
+# Set working directory
+WORKDIR /work
