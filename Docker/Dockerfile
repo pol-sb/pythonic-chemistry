@@ -50,6 +50,3 @@ RUN echo "ulimit -s unlimited" >> /etc/bash.bashrc
 
 # Verify python is accessible
 RUN python --version && pip --version
-
-# Set working directory
-WORKDIR /work
