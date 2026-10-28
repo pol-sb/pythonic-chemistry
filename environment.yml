@@ -10,7 +10,7 @@ dependencies:
     - pandas
     - matplotlib
     - seaborn
-    - jupyter-jsmol
+    - py3dmol=2.5.4
     - ase
     - pymatgen
     - xtb

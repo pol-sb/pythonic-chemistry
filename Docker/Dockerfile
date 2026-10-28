@@ -33,7 +33,7 @@ RUN pip install --no-cache-dir \
     scikit-learn \
     rdkit \
     xtb \
-    jupyter-jsmol
+    py3Dmol
 
 # Install xtb-related packages
 RUN pip install --no-cache-dir xtb-python || echo "xtb-python installation failed, skipping"
