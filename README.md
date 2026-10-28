@@ -5,6 +5,8 @@
 <a href="https://hub.docker.com/r/jherasdo/pythonic-chemistry"><img alt="Docker" src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"></a>
 </h1>
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pol-sb/pythonic-chemistry/test_binder?urlpath=%2Fdoc%2Ftree%2Fintro.ipynb)
+
 </div>
 
 Welcome to the exciting journey where chemistry meets Python! We proudly present the very first course of this kind at the Institute of Chemical Research of Catalonia (ICIQ). 
