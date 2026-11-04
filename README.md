@@ -10,6 +10,7 @@
 </div>
 
 
+
 Welcome to the exciting journey where chemistry meets Python! We proudly present the very first course of this kind at the Institute of Chemical Research of Catalonia (ICIQ). 
 Pythonic Chemistry is meticulously crafted for chemists ready to intertwine the elegance of chemical experiments with the dynamic capabilities of Python. 
 Whether it’s automating intricate lab data analysis, crafting cool visualizations or simulating experimental results, we’ve got you covered!
